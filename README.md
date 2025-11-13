@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+﻿## AI Resume Insights
 
-## Getting Started
+AI Resume Insights is a lightweight Next.js application that extracts key details from a resume, including the candidate's GitHub profile and a concise summary of their experience.
 
-First, run the development server:
+### Features
+- Upload PDF or plain text resumes (up to 5 MB)
+- Automatically detect GitHub profile links, emails, and phone numbers
+- Generate a brief AI-assisted summary from resume content
+- Highlight a skills snapshot when a skills section is detected
+- Pull live GitHub analytics (followers, language usage, highlighted repositories) when a GitHub URL is present in the resume
+
+### Getting Started
+Install dependencies and run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000` in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Usage
+1. Click **Browse files** and upload a resume (`.pdf` or `.txt`).
+2. Wait a moment while the server extracts the text.
+3. View the detected GitHub URL, contact details, skills, summary, and GitHub analytics on the results panel.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Notes
+- The parsing logic is heuristic-based. Cleanly formatted resumes produce the best summaries.
+- For improved accuracy with other formats (e.g., DOCX), convert the resume to PDF or text before uploading.
+- GitHub analytics rely on the public GitHub API (unauthenticated); rate limits apply (60 requests/hour).
 
-## Learn More
+### Tech Stack
+- Next.js 14 (App Router)
+- React + TypeScript
+- Tailwind CSS for UI styling
+- `pdf-parse` for server-side text extraction
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Scripts
+- `npm run dev` - start the development server
+- `npm run lint` - lint the project with ESLint
+- `npm run build` - build the production bundle
+- `npm run start` - serve the production build
