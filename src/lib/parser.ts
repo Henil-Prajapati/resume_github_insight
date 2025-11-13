@@ -138,10 +138,8 @@ export function parseResumeText(text: string): ParsedResume {
       .filter((phone) => phone.replace(/\D/g, "").length >= 10) ?? [];
 
   const githubMatches = cleaned.match(GITHUB_REGEX) ?? [];
-  const rawGithubUrl =
-    githubMatches.length > 0
-      ? githubMatches[0].replace(/[\s,.;)]*$/, "")
-      : null;
+  const firstMatch = githubMatches.length > 0 ? githubMatches[0] : null;
+  const rawGithubUrl = firstMatch ? firstMatch.replace(/[\s,.;)]*$/, "") : null;
 
   let githubUsername: string | null = null;
   if (rawGithubUrl) {
